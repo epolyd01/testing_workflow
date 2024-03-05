@@ -1,4 +1,4 @@
-import argparse as args
+import sys
 
+print(sys.argv[1])
 print("hello world")
-print(args[1])
