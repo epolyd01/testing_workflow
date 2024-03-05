@@ -18,6 +18,6 @@ jobs:
           python-version: '3.10'
 
       - name: Run Python script
-        run: | 
+      - run: | 
           echo "Ouput: ${{ inputs.input1 }}"
-          python test.py 
+         
