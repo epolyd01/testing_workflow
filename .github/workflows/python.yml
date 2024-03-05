@@ -18,7 +18,6 @@ jobs:
           python-version: '3.10'
 
       - name: Run Python script
-        run: | 
-          echo "Ouput: ${{ github.event.client_payload.input1 }}"
-          python test.py
+        run: 
+          python test.py  ${{ github.event.client_payload.input1 }}
          
