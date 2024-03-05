@@ -19,6 +19,6 @@ jobs:
 
       - name: Run Python script
         run: | 
-          echo "Ouput: ${{ github.event.client_payload.input1 }}"
+          echo "Ouput: ${{ github.event.inputs.input1 }}"
           python test.py
          
