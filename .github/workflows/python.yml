@@ -1,5 +1,3 @@
-name: Run Python script
-
 on:
   repository_dispatch:
     types: [trigger-workflow]
@@ -20,10 +18,17 @@ jobs:
       - name: Run Python script
         run: |
           python test.py > output.txt
-          continue-on-error: true  # Add this line to prevent job failure if python test.py returns a non-zero exit code
+        continue-on-error: true  # Add this line to prevent job failure if python test.py returns a non-zero exit code
 
       - name: Save output
         if: success()
         run: |
           mv output.txt $GITHUB_WORKSPACE/output.txt
-         
+
+      - name: Upload Artifact
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-artifact
+          path: $GITHUB_WORKSPACE/output.txt
+
