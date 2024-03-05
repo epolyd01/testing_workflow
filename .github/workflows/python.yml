@@ -17,18 +17,14 @@ jobs:
 
       - name: Run Python script
         run: |
-          python test.py > output.txt
-          continue-on-error: true  # Add this line to prevent job failure if python test.py returns a non-zero exit code
+          python test.py ${{ github.event.client_payload.input1 }} > output.txt
 
-      - name: Save output
-        if: success()
-        run: |
-          mv output.txt $GITHUB_WORKSPACE/output.txt
+      - name: List workspace contents
+        run: ls $GITHUB_WORKSPACE
 
       - name: Upload Artifact
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: output-artifact
-          path: $GITHUB_WORKSPACE/output.txt
-
+          path: output.txt
